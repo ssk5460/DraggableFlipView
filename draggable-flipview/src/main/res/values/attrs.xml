@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DraggableFlipView">
+        <attr name="dragDetectAngle" format="integer" />
+        <attr name="draggableAngle" format="integer" />
+        <attr name="frontView" format="reference" />
+        <attr name="backView" format="reference" />
+    </declare-styleable>
+</resources>
