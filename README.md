@@ -4,13 +4,13 @@
 
 An android library that flip view while dragging.
 
-![demo]  
+![demo](art/demo.gif)
 
 
 The reason making this library is that I wanted to display simple information without a screen changing.  
 Please use this library using your imagination freely!!!
 
-![sample_use_image]
+![use_image](art/sample_use_image.gif)
 
 
 # Gradle
