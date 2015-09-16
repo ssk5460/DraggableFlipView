@@ -2,13 +2,13 @@
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/sasakicks/maven/DraggableFlipView/images/download.svg)](https://bintray.com/sasakicks/maven/DraggableFlipView/_latestVersion)
 
-An android library that flip view while dragging.
+An Android View library that flips while dragging.
 
 ![demo](art/demo.gif)
 
 
-The reason making this library is that I wanted to display simple information without a screen changing.  
-Please use this library using your imagination freely!!!
+The reason why I made this library is that I wanted to display simple information without leaving the screen.  
+Make use of this library for your imagination freely!!!
 
 ![use_image](art/sample_use_image.gif)
 
@@ -19,10 +19,8 @@ compile 'com.github.sasakicks:draggable-flipview:1.0.0'
 ```
 
 # How To Use
-Add DraggableFlipView widget to your layout.  
-Configure two layouts to show front view and back view.  
-Set two layout in the DraggableFlipView widget.  
-In the case of lower xml, I make layouts called view_front and view_back and set it.  
+1. Add DraggableFlipView widget to your layout.  
+2. Configure two layouts to show front view and back view, just like the code below:
 
 ```xml
 <com.github.sasakicks.draggableflipview.DraggableFlipView
