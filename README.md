@@ -1,6 +1,7 @@
 # DraggableFlipView
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/sasakicks/maven/DraggableFlipView/images/download.svg)](https://bintray.com/sasakicks/maven/DraggableFlipView/_latestVersion)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DraggableFlipView-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/2509)
 
 An Android View library that flips while dragging.
 
