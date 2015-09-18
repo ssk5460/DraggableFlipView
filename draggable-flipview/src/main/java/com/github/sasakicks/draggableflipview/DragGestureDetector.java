@@ -59,12 +59,10 @@ public class DragGestureDetector {
                     deltaX = eventX - originalPoint.x;
                     deltaY = eventY - originalPoint.y;
 
-                    // Viewに通知する
                     if (dragGestureListener != null) {
                         dragGestureListener.onDragGestureListener(this, action);
                     }
 
-                    // 速度の設定
                     velocityX = deltaX - prevDeltaX;
                     velocityY = deltaY - prevDeltaY;
                     prevDeltaX = deltaX;
@@ -75,10 +73,8 @@ public class DragGestureDetector {
 
             case MotionEvent.ACTION_UP: {
                 TouchPoint originalPoint = pointMap.get(originalIndex);
-                if (originalPoint != null) {
-                    if (dragGestureListener != null) {
-                        dragGestureListener.onDragGestureListener(this, action);
-                    }
+                if (originalPoint != null && dragGestureListener != null) {
+                    dragGestureListener.onDragGestureListener(this, action);
                 }
                 velocityX = velocityY = 0;
                 prevDeltaX = prevDeltaY = 0;

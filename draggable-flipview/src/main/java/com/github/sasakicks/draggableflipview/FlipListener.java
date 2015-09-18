@@ -30,19 +30,12 @@ public class FlipListener implements ValueAnimator.AnimatorUpdateListener {
 
         if (value <= 0.5f) {
             this.mParentView.setRotationY(180 * value * mDirection);
-            this.mParentView.setScaleX(scaleValue);
-            this.mParentView.setScaleY(scaleValue);
-            if (mFlipped) {
-                setStateFlipped(false);
-            }
         } else {
             this.mParentView.setRotationY(-180 * (1 - value) * mDirection);
-            this.mParentView.setScaleX(scaleValue);
-            this.mParentView.setScaleY(scaleValue);
-            if (!mFlipped) {
-                setStateFlipped(true);
-            }
         }
+        this.mParentView.setScaleX(scaleValue);
+        this.mParentView.setScaleY(scaleValue);
+        setStateFlipped(!mFlipped);
     }
 
     public void reverse() {

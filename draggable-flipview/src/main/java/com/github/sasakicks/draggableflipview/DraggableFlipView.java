@@ -119,25 +119,18 @@ public class DraggableFlipView extends FrameLayout implements DragGestureDetecto
     @Override
     public void onDragGestureListener(DragGestureDetector dragGestureDetector, int action) {
         if (isAnimation) return;
-        if (action == MotionEvent.ACTION_UP) {
-            if (mAngle >= mDragDetectAngle) {
-                setAutoRotateAnimation(RotateDirection.RIGHT);
-            } else if (mAngle <= -mDragDetectAngle) {
-                setAutoRotateAnimation(RotateDirection.LEFT);
-            }
-            return;
+        if (action != MotionEvent.ACTION_UP) {
+            this.setRotationY((dragGestureDetector.deltaX - dragGestureDetector.prevDeltaX) > 0 ? ++mAngle : --mAngle);
         }
 
-        this.setRotationY((dragGestureDetector.deltaX - dragGestureDetector.prevDeltaX) > 0 ? ++mAngle : --mAngle);
-
         if (mAngle >= mDraggableAngle) {
-            setAutoRotateAnimation(RotateDirection.RIGHT);
+            startAutoRotateAnimation(RotateDirection.RIGHT);
         } else if (mAngle < -mDraggableAngle) {
-            setAutoRotateAnimation(RotateDirection.LEFT);
+            startAutoRotateAnimation(RotateDirection.LEFT);
         }
     }
 
-    private void setAutoRotateAnimation(RotateDirection rotateDirection) {
+    private void startAutoRotateAnimation(RotateDirection rotateDirection) {
         isAnimation = true;
         if (mIsReverse) {
             mFlipListener.reverse();
