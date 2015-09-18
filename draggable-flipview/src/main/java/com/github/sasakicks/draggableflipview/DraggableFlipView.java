@@ -21,10 +21,11 @@ public class DraggableFlipView extends FrameLayout implements DragGestureDetecto
     private static final float DRAG_THRESHOLD_PARAM = 50.0f;
     private static final int DEFAULT_VALUE = 0;
     private static final int DEFAULT_DRAGGABLE_VALUE = 50;
-    private static final int DEFAULT_DRAG_DETECT_VALUE = 3;
+    private static final int DEFAULT_DRAG_DETECT_VALUE = 7;
 
     private DragGestureDetector mDragGestureDetector;
     private boolean isAnimation;
+    private boolean isDragging;
     private int mAngle;
     private int mDraggableAngle;
     private int mDragDetectAngle;
@@ -119,9 +120,18 @@ public class DraggableFlipView extends FrameLayout implements DragGestureDetecto
     @Override
     public void onDragGestureListener(DragGestureDetector dragGestureDetector, int action) {
         if (isAnimation) return;
-        if (action != MotionEvent.ACTION_UP) {
-            this.setRotationY((dragGestureDetector.deltaX - dragGestureDetector.prevDeltaX) > 0 ? ++mAngle : --mAngle);
+        if (action == MotionEvent.ACTION_UP) {
+            if (mAngle >= mDragDetectAngle) {
+                startAutoRotateAnimation(RotateDirection.RIGHT);
+            } else if (mAngle < -mDragDetectAngle) {
+                startAutoRotateAnimation(RotateDirection.LEFT);
+            }
+            return;
         }
+
+        mAngle = (dragGestureDetector.deltaX - dragGestureDetector.prevDeltaX) > 0 ? ++mAngle : --mAngle;
+        if (Math.abs(mAngle) > mDragDetectAngle) isDragging = true;
+        if(isDragging) this.setRotationY(mAngle);
 
         if (mAngle >= mDraggableAngle) {
             startAutoRotateAnimation(RotateDirection.RIGHT);
@@ -151,6 +161,7 @@ public class DraggableFlipView extends FrameLayout implements DragGestureDetecto
             public void onAnimationEnd(Animator animation) {
                 mAngle = 0;
                 isAnimation = false;
+                isDragging = false;
             }
 
             @Override

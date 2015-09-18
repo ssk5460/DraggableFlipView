@@ -23,6 +23,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.1'
 
-//    compile project(':draggable-flipview')
-    compile 'com.github.sasakicks:draggable-flipview:1.0.0'
+    compile project(':draggable-flipview')
+//    compile 'com.github.sasakicks:draggable-flipview:1.0.0'
 }
