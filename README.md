@@ -1,3 +1,5 @@
+[![Android Gems](http://www.android-gems.com/badge/sasakicks/DraggableFlipView.svg?branch=master)](http://www.android-gems.com/lib/sasakicks/DraggableFlipView)
+
 # DraggableFlipView
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/sasakicks/maven/DraggableFlipView/images/download.svg)](https://bintray.com/sasakicks/maven/DraggableFlipView/_latestVersion)
