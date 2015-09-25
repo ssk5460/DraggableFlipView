@@ -65,12 +65,12 @@ public class DraggableFlipView extends FrameLayout implements DragGestureDetecto
     private void init(Context context, AttributeSet attrs) {
 
         mFrontLayout = new RelativeLayout(context);
-        RelativeLayout.LayoutParams params1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        mFrontLayout.setLayoutParams(params1);
+        mFrontLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
         mBackLayout = new RelativeLayout(context);
-        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        mBackLayout.setLayoutParams(params2);
+        mBackLayout.setLayoutParams(new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
 
         this.addView(mFrontLayout);
         this.addView(mBackLayout);
@@ -95,10 +95,8 @@ public class DraggableFlipView extends FrameLayout implements DragGestureDetecto
             case MotionEvent.ACTION_UP:
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (Math.abs(ev.getX() - mDragGestureDetector.getTouchPoint().getX())
-                        > DRAG_THRESHOLD_PARAM
-                        || Math.abs(ev.getY() - mDragGestureDetector.getTouchPoint().getY())
-                        > DRAG_THRESHOLD_PARAM) {
+                if (Math.abs(ev.getX() - mDragGestureDetector.getTouchPoint().getX()) > DRAG_THRESHOLD_PARAM
+                        || Math.abs(ev.getY() - mDragGestureDetector.getTouchPoint().getY()) > DRAG_THRESHOLD_PARAM) {
                     mDragGestureDetector.setPointMap(ev);
                     return true;
                 }
@@ -131,7 +129,7 @@ public class DraggableFlipView extends FrameLayout implements DragGestureDetecto
 
         mAngle = (dragGestureDetector.deltaX - dragGestureDetector.prevDeltaX) > 0 ? ++mAngle : --mAngle;
         if (Math.abs(mAngle) > mDragDetectAngle) isDragging = true;
-        if(isDragging) this.setRotationY(mAngle);
+        if (isDragging) this.setRotationY(mAngle);
 
         if (mAngle >= mDraggableAngle) {
             startAutoRotateAnimation(RotateDirection.RIGHT);
@@ -149,10 +147,10 @@ public class DraggableFlipView extends FrameLayout implements DragGestureDetecto
         }
 
         mFlipListener.setRotateDirection(rotateDirection.getValue());
-        ValueAnimator mFlipAnimator = ValueAnimator.ofFloat(0f, 1f);
-        mFlipAnimator.addUpdateListener(mFlipListener);
-        mFlipAnimator.start();
-        mFlipAnimator.addListener(new Animator.AnimatorListener() {
+        ValueAnimator flipAnimator = ValueAnimator.ofFloat(0f, 1f);
+        flipAnimator.addUpdateListener(mFlipListener);
+        flipAnimator.start();
+        flipAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
             }

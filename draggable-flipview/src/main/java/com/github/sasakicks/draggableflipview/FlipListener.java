@@ -17,10 +17,10 @@ public class FlipListener implements ValueAnimator.AnimatorUpdateListener {
     private int mDirection;
 
     public FlipListener(final View front, final View back, final View parent) {
-        this.mParentView = parent;
-        this.mFrontView = front;
-        this.mBackView = back;
-        this.mBackView.setVisibility(View.GONE);
+        mParentView = parent;
+        mFrontView = front;
+        mBackView = back;
+        mBackView.setVisibility(View.GONE);
     }
 
     @Override
@@ -29,14 +29,14 @@ public class FlipListener implements ValueAnimator.AnimatorUpdateListener {
         final float scaleValue = 0.625f + (1.5f * (value - 0.5f) * (value - 0.5f));
 
         if (value <= 0.5f) {
-            this.mParentView.setRotationY(180 * value * mDirection);
+            mParentView.setRotationY(180 * value * mDirection);
             if (mFlipped) setStateFlipped(false);
         } else {
-            this.mParentView.setRotationY(-180 * (1 - value) * mDirection);
+            mParentView.setRotationY(-180 * (1 - value) * mDirection);
             if (!mFlipped) setStateFlipped(true);
         }
-        this.mParentView.setScaleX(scaleValue);
-        this.mParentView.setScaleY(scaleValue);
+        mParentView.setScaleX(scaleValue);
+        mParentView.setScaleY(scaleValue);
     }
 
     public void reverse() {
@@ -51,8 +51,8 @@ public class FlipListener implements ValueAnimator.AnimatorUpdateListener {
 
     private void setStateFlipped(boolean flipped) {
         mFlipped = flipped;
-        this.mFrontView.setVisibility(flipped ? View.GONE : View.VISIBLE);
-        this.mBackView.setVisibility(flipped ? View.VISIBLE : View.GONE);
+        mFrontView.setVisibility(flipped ? View.GONE : View.VISIBLE);
+        mBackView.setVisibility(flipped ? View.VISIBLE : View.GONE);
     }
 }
 
