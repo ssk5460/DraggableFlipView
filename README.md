@@ -17,7 +17,7 @@ Make use of this library for your imagination freely!!!
 
 # Gradle
 ```
-compile 'com.github.sasakicks:draggable-flipview:1.0.0'
+compile 'com.github.sasakicks:draggable-flipview:1.1.0'
 ```
 
 # How To Use
